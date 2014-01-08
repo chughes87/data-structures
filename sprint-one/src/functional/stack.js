@@ -22,5 +22,5 @@ var makeStack = function(){
     return size;
   };
   
-    return instance;
-  };
+  return instance;
+};
