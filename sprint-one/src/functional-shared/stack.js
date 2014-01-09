@@ -1,4 +1,5 @@
 var makeStack = function() {
+<<<<<<< HEAD
   var instance = {};
   instance.storage = {};
   instance.length = 0;
@@ -22,3 +23,27 @@ stackMethods.pop = function(){
 stackMethods.size = function(){
   return this.length;
 };
+=======
+  prototype = stackMethods; 
+  return instance;
+};
+  
+var stackMethods = {
+  instance: {},
+  storage: {},
+  length: 0,
+  push: function(value){
+    storage[length] = value;
+    length++;
+  },
+  pop: function(){
+    var popped = storage[size-1];        
+    storage[length-1] && delete storage[length-1];
+    length && length--;
+    return popped;
+  },
+  size: function(){
+    return length;
+  }
+};
+>>>>>>> 2461e96071ce131006c493abe0b6d436722b1d4a
