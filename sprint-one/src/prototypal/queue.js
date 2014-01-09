@@ -1,10 +1,10 @@
 var makeQueue = function(){
-  var instance = {};
+  var instance = Object.create(queueMethods);
   instance.storage = {};
   instance.start = 0;
   instance.end = 0;
   instance.length = 0;
-  _.extend(instance,queueMethods);
+  //_.extend(instance,queueMethods);
   return instance;
 };
 

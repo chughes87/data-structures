@@ -1,8 +1,7 @@
 var makeStack = function() {
-  var instance = {};
+  var instance = Object.create(stackMethods);
   instance.storage = {};
   instance.length = 0;
-  _.extend(instance,stackMethods);
   return instance;
 };
   
