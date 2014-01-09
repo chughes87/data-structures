@@ -1,5 +1,6 @@
 var makeStack = function() {
 <<<<<<< HEAD
+<<<<<<< HEAD
   var instance = {};
   instance.storage = {};
   instance.length = 0;
@@ -28,6 +29,12 @@ stackMethods.size = function(){
   return instance;
 };
   
+=======
+  prototype = stackMethods; 
+  return instance;
+};
+  
+>>>>>>> 2461e96071ce131006c493abe0b6d436722b1d4a
 var stackMethods = {
   instance: {},
   storage: {},
@@ -45,5 +52,9 @@ var stackMethods = {
   size: function(){
     return length;
   }
+<<<<<<< HEAD
+};
+>>>>>>> 2461e96071ce131006c493abe0b6d436722b1d4a
+=======
 };
 >>>>>>> 2461e96071ce131006c493abe0b6d436722b1d4a
