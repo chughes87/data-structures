@@ -1,29 +1,32 @@
 var makeQueue = function(){
-  var instance = {
-    storage: {},
-    start: 0,
-    end: 0,
-    size: 0
-  }
-  return _.extend(instance,queueMethods);
+  var instance = {};
+  instance.storage = {};
+  instance.start = 0;
+  instance.end = 0;
+  instance.length = 0;
+  _.extend(instance,queueMethods);
+  return instance;
 };
 
-var queueMethods = {
-  enqueue: function(value){
-    this.storage[this.end] = value;
-    this.end++;
-    this.size++;
-  },
-  dequeue: function(){
-    if(this.size){
-      this.size--;
-      var result = this.storage[this.start];
-      delete this.storage[this.start];
-      this.start++;
-      return result;
-    }
-  },
-  size: function(){
-    return this.size;
+queueMethods = {};
+
+queueMethods.enqueue = function(value){
+  this.storage[this.end] = value;
+  this.end++;
+  this.length++;
+};
+
+queueMethods.dequeue = function(){
+  if(this.length){
+    this.length--;
+    var result = this.storage[this.start];
+    delete this.storage[this.start];
+    this.start++;
+    return result;
   }
 };
+
+queueMethods.size  =  function(){
+  return this.length;
+};
+
