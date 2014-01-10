@@ -44,4 +44,9 @@ describe("tree", function() {
     assert.isTrue(tree.contains(8));
   });
 
+  it("should set parent attribute on child when adding child", function(){
+    var newchild = tree.addChild(1);
+    expect(newchild.parent).to.equal(tree);
+  })
+
 });

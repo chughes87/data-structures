@@ -1,7 +1,8 @@
-var makeTree = function(value){
+var makeTree = function(value, parent){
   var newTree = {};
   newTree.value = value;
   newTree.children = [];
+  newTree.parent = parent || null;
   extend(newTree, treeMethods);
   return newTree;
 };
@@ -16,7 +17,9 @@ var extend = function(target, mixin){
 var treeMethods = {};
 
 treeMethods.addChild = function(value){
-  return this.children.push(makeTree(value));
+  var newChild = makeTree(value, this);
+  this.children.push(newChild);
+  return newChild;
 };
 
 treeMethods.contains = function(target){
