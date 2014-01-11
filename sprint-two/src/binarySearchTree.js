@@ -40,8 +40,13 @@ binarySearchTreeMethods.contains = function(val){
   return result;
 };
 
-binarySearchTreeMethods.depthFirstLog = function(callback){
+binarySearchTreeMethods.traverse = function(callback){
   callback.call(this, this.value);
   this.left && this.left.depthFirstLog(callback);
   this.right && this.right.depthFirstLog(callback);
+};
+
+binarySearchTreeMethods.depthFirstLog = function(){
+  var callback = function(value){console.log(value)};
+  this.traverse(callback);
 };
