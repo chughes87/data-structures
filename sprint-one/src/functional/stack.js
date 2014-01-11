@@ -1,28 +1,24 @@
 var makeStack = function(){
   var instance = {};
   var storage = {};
-  var size = 0;
+  var length = 0;
 
   instance.push = function(value){
-    storage[size] = value;
-    size++;
+    storage[length] = value;
+    length++;
   };
 
   instance.pop = function(){
-    if(size){
-      size--;
-      var result = storage[size];
-      delete storage[size];
+    if(length){
+      length--;
+      var result = storage[length];
+      delete storage[length];
       return result;
     }
-    var popped = storage[size-1];        
-    storage[size-1] && delete storage[size-1];
-    size && size--;
-    return popped;
   };
 
   instance.size = function(){
-    return size;
+    return length;
   };
   return instance;
 };

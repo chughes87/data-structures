@@ -23,13 +23,13 @@ treeMethods.addChild = function(value){
 };
 
 treeMethods.contains = function(target){
-  var innerFun = function(node){
+  var searchTree = function(node){
     var result = false;
     if(node.value === target){
       result = true;
     }else{
       for(var i = 0; i < node.children.length; i++){
-        if(innerFun(node.children[i])){
+        if(searchTree(node.children[i])){
           result = true;
           break;
         }
@@ -37,6 +37,6 @@ treeMethods.contains = function(target){
     }
     return result;
   }
-  return innerFun(this);
+  return searchTree(this);
 };
 

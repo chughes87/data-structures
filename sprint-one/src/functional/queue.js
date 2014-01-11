@@ -3,26 +3,25 @@ var makeQueue = function(){
   var storage = {};
   var start = 0;
   var end = 0;
-  var size = 0;
+  var length = 0;
 
   instance.enqueue = function(value){
     storage[end] = value;
     end++;
-    size++;
+    length++;
   };
 
   instance.dequeue = function(){
-    if(size){
-      size--;
-      var result = storage[start];
-      delete storage[start];
-      start++;
-      return result;
-    }
+    length || return undefined;
+    length--;
+    var result = storage[start];
+    delete storage[start];
+    start++;
+    return result;
   };
 
   instance.size = function(){
-    return size;
+    return length;
   };
 
   return instance;

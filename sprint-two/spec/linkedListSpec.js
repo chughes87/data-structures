@@ -97,9 +97,9 @@ describe("linkedList", function() {
     linkedList.addToHead(0);
     linkedList.addToHead(1);
     linkedList.addToHead(2);
-    var tail = linkedList.find(0);
-    var middle = linkedList.find(1);
-    var head = linkedList.find(2);
+    var tail = linkedList.find(0)[0];
+    var middle = linkedList.find(1)[0];
+    var head = linkedList.find(2)[0];
     linkedList.remove(middle);
     expect(linkedList.find(1)).to.equal(undefined);
     expect(tail.prev).to.equal(head);
@@ -114,7 +114,7 @@ describe("linkedList", function() {
     linkedList.addToHead(0);
     linkedList.addToHead(1);
     linkedList.addToHead(2);
-    linkedList.remove(linkedList.find(2));
+    linkedList.remove(linkedList.find(2)[0]);
     expect(linkedList.find(2)).to.equal(undefined);
   });
 
@@ -122,7 +122,7 @@ describe("linkedList", function() {
     linkedList.addToHead(0);
     linkedList.addToHead(1);
     linkedList.addToHead(2);
-    linkedList.remove(linkedList.find(0));
+    linkedList.remove(linkedList.find(0)[0]);
     expect(linkedList.find(0)).to.equal(undefined);
   });
 });

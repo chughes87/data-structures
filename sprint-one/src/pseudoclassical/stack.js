@@ -9,12 +9,11 @@ Stack.prototype.push = function(value){
 };
 
 Stack.prototype.pop = function(){
-  if(this.length){
-    this.length--;
-    var result = this.storage[this.length];
-    delete this.storage[this.length];
-    return result;
-  }
+  this.length || return undefined;
+  this.length--;
+  var result = this.storage[this.length];
+  delete this.storage[this.length];
+  return result;
 };
 
 Stack.prototype.size = function(){

@@ -4,7 +4,6 @@ var makeQueue = function(){
   instance.start = 0;
   instance.end = 0;
   instance.length = 0;
-  //_.extend(instance,queueMethods);
   return instance;
 };
 
@@ -17,13 +16,12 @@ queueMethods.enqueue = function(value){
 };
 
 queueMethods.dequeue = function(){
-  if(this.length){
-    this.length--;
-    var result = this.storage[this.start];
-    delete this.storage[this.start];
-    this.start++;
-    return result;
-  }
+  this.length || return undefined;
+  this.length--;
+  var result = this.storage[this.start];
+  delete this.storage[this.start];
+  this.start++;
+  return result;
 };
 
 queueMethods.size  =  function(){

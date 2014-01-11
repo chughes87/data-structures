@@ -6,8 +6,7 @@ var makeLinkedList = function(){
   list.addToHead = function(value){
     var newNode = makeNode(value);
     if(this.head === null && this.tail === null){
-      this.head = newNode;
-      this.tail = newNode;
+      this.head = this.tail = newNode;
     }else if(this.head === this.tail){
       this.head = newNode;
       this.head.next = this.tail;
@@ -17,19 +16,21 @@ var makeLinkedList = function(){
       this.head.prev = newNode;
       this.head = newNode;
     }
-    //var newNode = makeNode(value);
-    //newNode.next = this.head;
-    //this.head && (this.head.prev = newNode);
-    //this.head = newNode;
-    //this.tail || (this.tail = newNode);
   };
 
   list.addToTail = function(value){
     var newNode = makeNode(value);
-    newNode.prev = this.tail;
-    this.tail && (this.tail.next = newNode);
-    this.tail = newNode;
-    this.head || (this.head = newNode);
+    if(this.head === null && this.tail === null){
+      this.head = this.tail = newNode;
+    }else if(this.head === this.tail){
+      this.tail = newNode;
+      this.head.next = this.tail;
+      this.tail.prev = this.head;
+    }else {
+      newNode.prev = this.tail;
+      this.tail.next = newNode;
+      this.tail = newNode;
+    }
   };
 
   list.removeHead = function(){
@@ -47,10 +48,16 @@ var makeLinkedList = function(){
   };
 
   list.remove = function(node){
-    node.prev || (this.head = node.next);
-    node.next || (this.tail = node.prev); 
-    node.prev && (node.prev.next = node.next);
-    node.next && (node.next.prev = node.prev);
+    if(node === this.head){
+      this.head = node.next;
+      this.head.prev = null;
+    }else if(node === this.tail){
+      this.tail = node.prev;
+      this.tail.next = null;
+    }else{
+      node.prev.next = node.next;
+      node.next.prev = node.prev
+    }
     node.next = null;
     node.prev = null;
   }
