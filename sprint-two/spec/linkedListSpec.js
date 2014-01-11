@@ -68,5 +68,61 @@ describe("linkedList", function() {
     linkedList.addToHead(4);
     expect(linkedList.removeHead().value).to.equal(4);
   });
-  // add more tests here to test the functionality of linkedList
+
+  it("contains should be able to use a validator", function(){
+    linkedList.addToHead([0,'a']);
+    linkedList.addToHead([1,'b']);
+    linkedList.addToHead([2,'c']);
+    linkedList.addToHead([3,'d']);
+    linkedList.addToHead([4,'e']);
+    var validator = function(a,b){return a[0] === b;};
+    expect(linkedList.contains(4,validator)).to.equal(true);
+    expect(linkedList.contains(2,validator)).to.equal(true);
+  });
+
+  it("get should return value requested", function(){
+    linkedList.addToHead([0,'a']);
+    linkedList.addToHead([1,'b']);
+    linkedList.addToHead([2,'c']);
+    linkedList.addToHead([3,'d']);
+    linkedList.addToHead([4,'e']);
+    linkedList.addToHead([1,'z']);
+    var validator = function(a,b){return a[0] == b;};
+    var result = linkedList.find(1, validator);
+    expect(result[0].value).to.eql([1,'b']);
+    expect(result[1].value).to.eql([1,'z']);
+  });
+
+  it("should be able to remove middle node", function() {
+    linkedList.addToHead(0);
+    linkedList.addToHead(1);
+    linkedList.addToHead(2);
+    var tail = linkedList.find(0);
+    var middle = linkedList.find(1);
+    var head = linkedList.find(2);
+    //linkedList.remove(middle;
+    //expect(linkedList.find(1)).to.equal(undefined);
+    //expect(tail.prev).to.equal(null);
+    //expect(tail.next).to.equal(head);
+    //expect(head.prev).to.equal(tail);
+    //expect(head.next).to.equal(null);
+    //expect(middle.next).to.equal(null);
+    //expect(middle.prev).to.equal(null);
+  });
+
+  it("should be able to remove head node", function() {
+    linkedList.addToHead(0);
+    linkedList.addToHead(1);
+    linkedList.addToHead(2);
+    linkedList.remove(linkedList.find(2));
+    expect(linkedList.find(2)).to.equal(undefined);
+  });
+
+  it("should be able to remove tail node", function() {
+    linkedList.addToHead(0);
+    linkedList.addToHead(1);
+    linkedList.addToHead(2);
+    linkedList.remove(linkedList.find(0));
+    expect(linkedList.find(0)).to.equal(undefined);
+  });
 });
