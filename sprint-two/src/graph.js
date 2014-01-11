@@ -21,9 +21,7 @@ Graph.prototype.addNode = function(newNode, toNode){
 
 Graph.prototype._addNode = function(newNode){
   if(!this.nodes[newNode]){
-    var newSet = makeSet();
-    newSet.add(newNode);
-    this.nodes[newNode] = newSet;
+    this.nodes[newNode] = makeSet();
     this.nodeCount++;
   }else{
     throw("ERR: This node already exists in this graph.");
@@ -39,8 +37,7 @@ Graph.prototype.removeNode = function(node){
     return;
   }
   var callback = function(neighbor){this.removeEdge(node, neighbor);};
-  callback.bind(this);
-  this.nodes[node].each(callback);
+  this.nodes[node].each(callback.bind(this));
   delete this.nodes[node];
   this.nodeCount--;
 };
