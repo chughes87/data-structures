@@ -27,4 +27,16 @@ describe("set", function() {
     assert.isFalse(set.contains('Mel Gibson'));
   });
 
+  it("shoud be able to store functions", function(){
+    var testFn = function(){return "test"};
+    set.add(testFn);
+    assert.isTrue(set.contains(testFn));
+  });
+
+  it("should be able to store objects", function(){
+    var obj = {a:1, b:2}
+    set.add(obj);
+    assert.isTrue(set.contains(obj));
+  });
+
 });

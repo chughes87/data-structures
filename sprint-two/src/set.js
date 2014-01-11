@@ -15,7 +15,7 @@ setPrototype.add = function(item){
 setPrototype.contains = function(item){
   var result = false;
   for(var prop in this._storage){
-    (item === prop) && (result = true);
+    (item === this._storage[prop]) && (result = true);
   }
   return result;
 };
