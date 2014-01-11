@@ -4,19 +4,24 @@ var makeLinkedList = function(){
   list.tail = null;
 
   list.addToHead = function(value){
+    var newNode = makeNode(value);
     if(this.head === null && this.tail === null){
       this.head = newNode;
       this.tail = newNode;
-    }else{
+    }else if(this.head === this.tail){
+      this.head = newNode;
+      this.head.next = this.tail;
+      this.tail.prev = this.head;
+    }else {
       newNode.next = this.head;
       this.head.prev = newNode;
       this.head = newNode;
     }
-    var newNode = makeNode(value);
-    newNode.next = this.head;
-    this.head && (this.head.prev = newNode);
-    this.head = newNode;
-    this.tail || (this.tail = newNode);
+    //var newNode = makeNode(value);
+    //newNode.next = this.head;
+    //this.head && (this.head.prev = newNode);
+    //this.head = newNode;
+    //this.tail || (this.tail = newNode);
   };
 
   list.addToTail = function(value){

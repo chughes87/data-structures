@@ -100,14 +100,14 @@ describe("linkedList", function() {
     var tail = linkedList.find(0);
     var middle = linkedList.find(1);
     var head = linkedList.find(2);
-    //linkedList.remove(middle;
-    //expect(linkedList.find(1)).to.equal(undefined);
-    //expect(tail.prev).to.equal(null);
-    //expect(tail.next).to.equal(head);
-    //expect(head.prev).to.equal(tail);
-    //expect(head.next).to.equal(null);
-    //expect(middle.next).to.equal(null);
-    //expect(middle.prev).to.equal(null);
+    linkedList.remove(middle);
+    expect(linkedList.find(1)).to.equal(undefined);
+    expect(tail.prev).to.equal(head);
+    expect(tail.next).to.equal(null);
+    expect(head.prev).to.equal(null);
+    expect(head.next).to.equal(tail);
+    expect(middle.next).to.equal(null);
+    expect(middle.prev).to.equal(null);
   });
 
   it("should be able to remove head node", function() {
