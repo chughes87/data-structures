@@ -31,19 +31,30 @@ var makeLinkedList = function(){
       this.tail.next = newNode;
       this.tail = newNode;
     }
-  };
+  }
 
   list.removeHead = function(){
     var deletee = this.head;
-    this.head = this.head.next;
-    this.head.prev = null;
+    if(!this.head) return null;
+    if(this.head.next !== null){
+      this.head = this.head.next;
+      this.head.prev = null;
+    }else{
+      this.head = null;
+      this.tail = null;
+    }
     return deletee;
   };
 
   list.removeTail = function(){
     var deletee = this.tail;
-    this.tail = this.tail.prev;
-    this.tail.next = null;
+    if(this.head.next !== null){
+      this.tail = this.tail.prev;
+      this.tail.next = null;
+    }else{
+      this.head = null;
+      this.tail = null;
+    }
     return deletee;
   };
 
